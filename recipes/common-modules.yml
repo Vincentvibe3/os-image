@@ -63,11 +63,11 @@ modules:
         
 
     group-install:
-    install-weak-deps: false
-    packages:
-      - multimedia
-    exclude:
-      - PackageKit-gstreamer-plugin
+      install-weak-deps: false
+      packages:
+        - multimedia
+      exclude:
+        - PackageKit-gstreamer-plugin
 
     remove:
       packages:
