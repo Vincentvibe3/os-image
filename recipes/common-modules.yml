@@ -201,4 +201,14 @@ modules:
       enabled:
         - podman.socket
 
+  - type: justfiles
+    validate: true
+    install: true
+
+  - type: files
+    files:
+      - source: grub2  
+        destination: /usr/share/grub-config
+
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
