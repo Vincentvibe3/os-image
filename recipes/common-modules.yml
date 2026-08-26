@@ -1,0 +1,204 @@
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: dnf
+    repos:
+      # copr:
+      nonfree: rpmfusion
+      files:
+        - vscode.repo
+      keys:
+        - https://packages.microsoft.com/keys/microsoft.asc # For VSCode
+        - https://kopia.io/signing-key
+    install:
+      packages:
+        - neovim
+        - niri
+        - hyprlock
+        - zsh
+        - code
+        - gnome-console
+        - google-noto-fonts-all
+        - google-noto-emoji-fonts
+        - google-noto-color-emoji-fonts 
+        - libdvdcss
+        - podman 
+        - buildah
+        - skopeo
+        - toolbox
+        - distrobox
+        - NetworkManager-tui
+        - gnupg2-scdaemon
+        - yubikey-manager
+        - blueman
+        - dislocker
+        - swaybg
+        - swayidle
+        - btop
+        - zsh
+        - powertop
+        - polkit-kde
+        - mako
+        - ibus-mozc
+        - kf6-kirigami-devel
+        - kf5-kirigami-devel
+        - screen
+        - tmux
+        - docker-cli
+        - containerd
+        - docker-compose
+        - docker-compose-switch
+        - usbtop
+        - ibus-mozc
+        - ibus
+        - kopia
+        - kopia-ui
+        - waydroid
+        - stlink
+      exclude:
+        - alacritty
+        
+
+    group-install:
+    install-weak-deps: false
+    packages:
+      - multimedia
+    exclude:
+      - PackageKit-gstreamer-plugin
+
+    remove:
+      packages:
+        # example: removing firefox (in favor of the flatpak)
+        # "firefox" is the main package, "firefox-langpacks" is a dependency
+        - firefox
+        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+        # If no repo information is specified, Flathub will be used by default
+        install: # system flatpaks we want all users to have and not remove
+          # Browser
+          - org.mozilla.firefox
+          
+          # Flatpak Management
+          - io.github.flattool.Warehouse
+          - io.github.flattool.Ignition
+          - com.github.tchx84.Flatseal
+          - io.github.kolunmi.Bazaar
+
+          # Container tools
+          - com.ranfdev.DistroShelf
+
+          # Misc
+          - org.fedoraproject.MediaWriter
+          - io.missioncenter.MissionCenter
+          - io.github.linx_systems.ClamUI
+
+          # Gnome Apps
+          - org.gnome.Logs
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Snapshot
+          - org.gnome.clocks
+          - org.gnome.Connections
+          - org.gnome.Contacts
+          - org.gnome.baobab
+          - org.gnome.SimpleScan
+          - org.gnome.Papers
+          - org.gnome.Firmware
+          - org.gnome.font-viewer
+          - org.gnome.Loupe
+          - org.gnome.Maps
+          - org.gnome.SoundRecorder
+          - org.gnome.NautilusPreviewer
+          - org.gnome.TextEditor
+          - org.gnome.Showtime
+          - org.gnome.Weather
+          - org.gnome.Characters
+          - org.gnome.seahorse.Application
+
+      - scope: user # Also add Flathub user repo, but no user packages
+        install:
+          # Development
+          - io.podman_desktop.PodmanDesktop
+          - page.codeberg.dnkl.foot
+          - org.chromium.Chromium
+          - dev.geopjr.Collision
+
+          # Productivity
+          - org.mozilla.thunderbird
+          - io.github.finefindus.Hieroglyphic
+          - com.github.flxzt.rnote
+          - com.github.jeromerobert.pdfarranger
+          - org.libreoffice.LibreOffice
+          - org.octave.Octave
+
+          # Gaming
+          - com.valvesoftware.Steam
+          - com.discordapp.Discord
+          - com.modrinth.ModrinthApp
+          - org.prismlauncher.PrismLauncher
+          - com.heroicgameslauncher.hgl
+
+          # Creative
+          - com.github.PintaProject.Pinta
+          - org.darktable.Darktable
+          - com.rawtherapee.RawTherapee
+          - com.github.finefindus.eyedropper
+          - fr.handbrake.ghb
+          - com.github.PintaProject.Pinta
+          - rg.tenacityaudio.Tenacity
+          - org.inkscape.Inkscape
+          - org.gimp.GIMP
+          - org.kde.krita
+
+          # Customization
+          - com.mattjakeman.ExtensionManager
+          - page.tesk.Refine
+          - com.github.wwmm.easyeffects
+
+          # Media
+          - nl.andreasknoben.Laser
+          - app.drey.EarTag
+          - com.spotify.Client
+          - org.videolan.VLC
+          - com.obsproject.Studio
+          - com.github.neithern.g4music
+
+          # Misc
+          - it.mijorus.smile
+          
+
+  - type: brew
+    brew-analytics: false # disable telemetry
+    auto-upgrade: true
+    auto-update: true
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix
+        - 0xProto
+        - CaskaydiaCove
+        - CaskaydiaMono
+        - Iosevka
+        - NerdFontsSymbolsOnly
+      google-fonts:
+        - Roboto
+        - Inter
+
+  - type: systemd
+    # this example disables automatic flatpak updates and enables a custom service unit for all users
+    # system:
+    #   disabled:
+    #     - 
+    user:
+      enabled:
+        - podman.socket
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
