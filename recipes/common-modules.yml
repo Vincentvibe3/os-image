@@ -161,7 +161,6 @@ modules:
           - com.github.finefindus.eyedropper
           - fr.handbrake.ghb
           - com.github.PintaProject.Pinta
-          - rg.tenacityaudio.Tenacity
           - org.inkscape.Inkscape
           - org.gimp.GIMP
           - org.kde.krita
