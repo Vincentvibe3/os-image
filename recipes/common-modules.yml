@@ -28,8 +28,8 @@ modules:
         - niri
         - noctalia
         - zsh
+        - ptyxis
         - code
-        - gnome-console
         - google-noto-fonts-all
         - google-noto-emoji-fonts
         - google-noto-color-emoji-fonts 
