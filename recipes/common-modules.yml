@@ -222,6 +222,10 @@ modules:
       - source: grub2  
         destination: /usr/share/grub-config
 
+  # Clean up to pass bootc lint
+  - type: script
+    snippets:
+      - "rm -f /tmp/nvim.root"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
