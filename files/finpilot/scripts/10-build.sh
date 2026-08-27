@@ -29,7 +29,13 @@ echo "::group:: Copy Custom Files"
 
 # Copy Brewfiles to standard location
 mkdir -p /usr/share/ublue-os/homebrew/
-cp /ctx/custom/brew/*.Brewfile /usr/share/ublue-os/homebrew/
+
+# Modification to copy only if a file is found due to nullglob
+brewfiles=(/ctx/custom/brew/*.Brewfile)
+if [[ -e "${brewfiles[0]}" ]]; then
+    cp /ctx/custom/brew/*.Brewfile /usr/share/ublue-os/homebrew/
+fi
+
 
 # Consolidate Just Files
 mkdir -p /usr/share/ublue-os/just/
