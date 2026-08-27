@@ -69,6 +69,7 @@ modules:
         - stlink
         - fzf
         - gum
+        - htop
       exclude:
         - alacritty
         
@@ -182,11 +183,11 @@ modules:
           # Misc
           - it.mijorus.smile
           
-
-  - type: brew
-    brew-analytics: false # disable telemetry
-    auto-upgrade: true
-    auto-update: true
+  # Removed to test using finpilot's method with ublue-os/brew container image
+  # - type: brew
+  #   brew-analytics: false # disable telemetry
+  #   auto-upgrade: true
+  #   auto-update: true
 
   - type: fonts
     fonts:
@@ -202,10 +203,12 @@ modules:
         - Inter
 
   - type: systemd
-    # this example disables automatic flatpak updates and enables a custom service unit for all users
-    # system:
-    #   disabled:
-    #     - 
+    
+    system:
+      enabled:
+        - brew-update.timer
+        - brew-update.timer
+        - brew-setup.service
     user:
       enabled:
         - podman.socket
@@ -221,3 +224,13 @@ modules:
 
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+  - type: script
+    scripts:
+      - clean-stage.sh
+      
+
+  - type: containerfile
+    snippets:
+      - RUN bootc container lint --fatal-warnings
+
