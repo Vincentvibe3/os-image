@@ -16,6 +16,8 @@ stages:
 # you can include multiple instances of the same module
 modules:
   - type : script
+    env: 
+      BASE_IMAGE_NAME : silverblue
     scripts:
       - 40-nvidia.sh
 
