@@ -10,6 +10,7 @@ modules:
       nonfree: rpmfusion
       files:
         - vscode.repo
+        - kopia.repo
       keys:
         - https://packages.microsoft.com/keys/microsoft.asc # For VSCode
         - https://kopia.io/signing-key
