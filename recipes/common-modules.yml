@@ -6,7 +6,8 @@ modules:
 
   - type: dnf
     repos:
-      # copr:
+      copr:
+        - solopasha/hyprland
       nonfree: rpmfusion
       files:
         - vscode.repo
@@ -16,6 +17,7 @@ modules:
         - https://kopia.io/signing-key
     install:
       packages:
+        - rpmfusion-free-release-tainted
         - neovim
         - niri
         - hyprlock
