@@ -6,6 +6,13 @@ modules:
 
   - type: dnf
     repos:
+      nonfree: rpmfusion
+    install:
+      packages:
+        - rpmfusion-free-release-tainted
+
+  - type: dnf
+    repos:
       # copr:
       #   - 
       nonfree: rpmfusion
@@ -17,7 +24,6 @@ modules:
         - https://kopia.io/signing-key
     install:
       packages:
-        - rpmfusion-free-release-tainted
         - neovim
         - niri
         - noctalia
