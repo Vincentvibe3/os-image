@@ -1,6 +1,11 @@
 modules:
   - type: containerfile
     snippets:
+      #  DNF setup
+      - > 
+        RUN cp /etc/dnf/dnf.conf /etc/dnf/dnf.conf.tmp 
+        && mv /etc/dnf/dnf.conf.tmp /etc/dnf/dnf.conf 
+        && dnf5 config-manager setopt keepcache=1 install_weak_deps=0
       - >
         RUN --mount=type=bind,from=ctx,source=/,target=/ctx 
         --mount=type=cache,dst=/var/cache/libdnf5 
