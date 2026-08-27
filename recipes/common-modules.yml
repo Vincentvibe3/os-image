@@ -4,10 +4,6 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
-  - type: script
-    scripts:
-      - 10-build.sh
-
   - type: dnf
     repos:
       nonfree: rpmfusion
@@ -229,9 +225,12 @@ modules:
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
-  - type: script
-    scripts:
-      - clean-stage.sh
+  - type: containerfile
+    snippets:
+      - RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+        --mount=type=tmpfs,dst=/tmp \
+        --mount=type=tmpfs,dst=/boot \
+        /ctx/build/clean-stage.sh
       
 
   - type: containerfile
