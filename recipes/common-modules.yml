@@ -67,6 +67,8 @@ modules:
         - kopia-ui
         - waydroid
         - stlink
+        - fzf
+        - gum
       exclude:
         - alacritty
         
