@@ -192,8 +192,8 @@ modules:
       nerd-fonts:
         - FiraCode # don't add spaces or "Nerd Font" suffix
         - 0xProto
-        - CaskaydiaCove
-        - CaskaydiaMono
+        - CascadiaCode
+        - CascadiaMono
         - Iosevka
         - NerdFontsSymbolsOnly
       google-fonts:
