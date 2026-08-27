@@ -16,9 +16,8 @@ modules:
         /ctx/build/10-build.sh
   
   - type : containerfile
-    env: 
-      BASE_IMAGE_NAME : silverblue
     snippets:
+      - ARG BASE_IMAGE_NAME="silverblue"
       - > 
         RUN --mount=type=bind,from=ctx,source=/,target=/ctx 
         --mount=type=cache,dst=/var/cache/libdnf5 
