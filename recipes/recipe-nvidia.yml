@@ -15,26 +15,4 @@ stages:
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: finpilot-setup.yml
-
-  - type : containerfile
-    env: 
-      BASE_IMAGE_NAME : silverblue
-    snippets:
-      - RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-        --mount=type=cache,dst=/var/cache/libdnf5 \
-        --mount=type=cache,dst=/var/cache/rpm-ostree \
-        --mount=type=secret,id=GITHUB_TOKEN \
-        --mount=type=tmpfs,dst=/boot \
-        --mount=type=tmpfs,dst=/tmp \
-        /ctx/build/40-nvidia.sh
-
-  - from-file: common-modules.yml
-
-  - type: dnf
-    repos:
-      nonfree: rpmfusion
-      
-    install:
-      packages:
-        - libva-nvidia-driver
+  - from-file: finpilot-setup-nvidia.yml

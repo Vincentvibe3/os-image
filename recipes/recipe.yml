@@ -16,4 +16,3 @@ stages:
 # you can include multiple instances of the same module
 modules:
   - from-file: finpilot-setup.yml
-  - from-file: common-modules.yml
