@@ -6,8 +6,8 @@ modules:
 
   - type: dnf
     repos:
-      copr:
-        - solopasha/hyprland
+      # copr:
+      #   - 
       nonfree: rpmfusion
       files:
         - vscode.repo
@@ -20,7 +20,7 @@ modules:
         - rpmfusion-free-release-tainted
         - neovim
         - niri
-        - hyprlock
+        - noctalia
         - zsh
         - code
         - gnome-console
