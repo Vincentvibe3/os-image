@@ -57,10 +57,10 @@ echo "::group:: Install Packages"
 # dnf5 install -y tmux gum
 
 # Example using COPR with isolated pattern:
-copr_install_isolated "ublue-os/staging" uupd
-copr_install_isolated "ublue-os/staging" ublue-os-just
-copr_install_isolated "ublue-os/staging" ublue-os-udev-rules
-copr_install_isolated "ublue-os/staging" ublue-fastfetch
+copr_install_isolated "ublue-os/packages" uupd
+copr_install_isolated "ublue-os/packages" ublue-os-just
+copr_install_isolated "ublue-os/packages" ublue-os-udev-rules
+copr_install_isolated "ublue-os/packages" ublue-fastfetch
 
 echo "::endgroup::"
 
