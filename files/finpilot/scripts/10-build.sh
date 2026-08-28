@@ -37,7 +37,7 @@ if [[ -v brewfiles ]]; then
 fi
 
 # Add bluefin common
-cp /ctx/oci/common /
+cp -r /ctx/oci/common /
 
 # Consolidate Just Files
 mkdir -p /usr/share/ublue-os/just/
