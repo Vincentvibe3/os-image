@@ -6,6 +6,5 @@
 set -oue pipefail
 
 # Your code goes here.
-rm /usr/share/applications/bluefin-help.desktop
 rm /usr/share/applications/discourse.desktop
 rm /usr/share/applications/documentation.desktop
