@@ -13,6 +13,19 @@ modules:
 
   - type: dnf
     repos:
+      copr:
+        - ublue-os/packages
+    install:
+      packages: 
+        - uupd
+        - ublue-os-just
+        - ublue-os-udev-rules
+        - ublue-recipes
+        - ublue-fastfetch
+        - ublue-brew
+
+  - type: dnf
+    repos:
       # copr:
       #   - 
       nonfree: rpmfusion
@@ -70,9 +83,27 @@ modules:
         - fzf
         - gum
         - htop
+        - fastfetch
       exclude:
         - alacritty
-        
+        - fedora-flathub-remote
+        - fedora-logos
+        - fedora-third-party
+        - gnome-software
+        - gnome-software-rpm-ostree
+        - podman-docker
+        - default-fonts-cjk-sans
+        - fedora-bookmarks
+        - fedora-chromium-config
+        - fedora-chromium-config-gnome
+        - fedora-third-party
+        - firefox-langpacks
+        - gnome-extensions-app
+        - gnome-shell-extension-background-logo
+        - gnome-terminal-nautilus
+        - google-noto-sans-cjk-fonts
+        - totem-video-thumbnailer
+        - yelp
 
     # group-install:
     #   install-weak-deps: false
@@ -209,6 +240,7 @@ modules:
         - brew-update.timer
         - brew-update.timer
         - brew-setup.service
+        - uupd.timer
     user:
       enabled:
         - podman.socket
