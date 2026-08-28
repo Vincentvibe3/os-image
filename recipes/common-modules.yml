@@ -28,7 +28,7 @@ modules:
         - niri
         - noctalia
         - zsh
-        - ptyxis
+        # - ptyxis
         - code
         - google-noto-fonts-all
         - google-noto-emoji-fonts
@@ -44,16 +44,16 @@ modules:
         - yubikey-manager
         - blueman
         - dislocker
-        - swaybg
-        - swayidle
+        # - swaybg
+        # - swayidle
         - btop
         - zsh
         - powertop
-        - polkit-kde
+        # - polkit-kde
         - mako
         - ibus-mozc
-        - kf6-kirigami-devel
-        - kf5-kirigami-devel
+        # - kf6-kirigami-devel
+        # - kf5-kirigami-devel
         - screen
         - tmux
         - docker-cli
@@ -67,37 +67,9 @@ modules:
         - kopia-ui
         - waydroid
         - stlink
-        - fzf
-        - gum
         - htop
-        - fastfetch
       exclude:
         - alacritty
-        - fedora-flathub-remote
-        - fedora-logos
-        - fedora-third-party
-        - gnome-software
-        - gnome-software-rpm-ostree
-        - podman-docker
-        - default-fonts-cjk-sans
-        - fedora-bookmarks
-        - fedora-chromium-config
-        - fedora-chromium-config-gnome
-        - fedora-third-party
-        - firefox-langpacks
-        - gnome-extensions-app
-        - gnome-shell-extension-background-logo
-        - gnome-terminal-nautilus
-        - google-noto-sans-cjk-fonts
-        - totem-video-thumbnailer
-        - yelp
-
-    # group-install:
-    #   install-weak-deps: false
-    #   packages:
-    #     - multimedia
-    #   exclude:
-    #     - PackageKit-gstreamer-plugin
 
     remove:
       packages:
@@ -201,11 +173,10 @@ modules:
           # Misc
           - it.mijorus.smile
           
-  # Removed to test using finpilot's method with ublue-os/brew container image
-  # - type: brew
-  #   brew-analytics: false # disable telemetry
-  #   auto-upgrade: true
-  #   auto-update: true
+  - type: brew
+    brew-analytics: false # disable telemetry
+    auto-upgrade: true
+    auto-update: true
 
   - type: fonts
     fonts:
@@ -222,12 +193,8 @@ modules:
 
   - type: systemd
     
-    system:
-      enabled:
-        - brew-update.timer
-        - brew-update.timer
-        - brew-setup.service
-        - uupd.timer
+    # system:
+      # enabled:
     user:
       enabled:
         - podman.socket
@@ -242,9 +209,9 @@ modules:
         destination: /usr/share/grub-config
 
   # Clean up to pass bootc lint
-  - type: script
-    snippets:
-      - "rm -rf /tmp/nvim.root"
+  # - type: script
+  #   snippets:
+  #     - "rm -rf /tmp/nvim.root"
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 

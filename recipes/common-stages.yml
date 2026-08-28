@@ -1,7 +1,0 @@
-stages:
-  - name: commons
-    from: scratch
-    modules:  
-      - type: containerfile
-        containerfiles:
-          - context
