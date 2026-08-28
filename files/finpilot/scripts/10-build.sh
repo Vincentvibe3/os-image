@@ -13,7 +13,7 @@ set -euo pipefail
 
 # Source helper functions
 # shellcheck source=/dev/null
-# source /ctx/build/copr-helpers.sh
+source /ctx/build/copr-helpers.sh
 
 # Enable nullglob for all glob operations to prevent failures on empty matches
 shopt -s nullglob
@@ -57,7 +57,10 @@ echo "::group:: Install Packages"
 # dnf5 install -y tmux gum
 
 # Example using COPR with isolated pattern:
-# copr_install_isolated "ublue-os/staging" package-name
+copr_install_isolated "ublue-os/staging" uupd
+copr_install_isolated "ublue-os/staging" ublue-os-just
+copr_install_isolated "ublue-os/staging" ublue-os-udev-rules
+copr_install_isolated "ublue-os/staging" ublue-fastfetch
 
 echo "::endgroup::"
 

@@ -13,19 +13,6 @@ modules:
 
   - type: dnf
     repos:
-      copr:
-        - ublue-os/packages
-    install:
-      packages: 
-        - uupd
-        - ublue-os-just
-        - ublue-os-udev-rules
-        - ublue-recipes
-        - ublue-fastfetch
-        - ublue-brew
-
-  - type: dnf
-    repos:
       # copr:
       #   - 
       nonfree: rpmfusion
