@@ -58,6 +58,7 @@ modules:
         - tmux
         - docker-cli
         - containerd
+        - runc
         - docker-compose
         - docker-compose-switch
         - usbtop
@@ -68,6 +69,8 @@ modules:
         - waydroid
         - stlink
         - htop
+        - fzf 
+        - gum
       exclude:
         - alacritty
 
@@ -76,6 +79,7 @@ modules:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
+        - input-remapper
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
@@ -207,6 +211,10 @@ modules:
     files:
       - source: grub2  
         destination: /usr/share/grub-config
+
+  - type: script
+    scripts:
+      - remove-desktop-entries.sh
 
   # Clean up to pass bootc lint
   # - type: script
