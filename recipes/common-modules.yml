@@ -28,6 +28,7 @@ modules:
         - niri
         - noctalia
         - zsh
+        - foot
         # - ptyxis
         - code
         - google-noto-fonts-all
@@ -134,7 +135,6 @@ modules:
         install:
           # Development
           - io.podman_desktop.PodmanDesktop
-          - page.codeberg.dnkl.foot
           - org.chromium.Chromium
           - dev.geopjr.Collision
 
