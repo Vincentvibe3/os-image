@@ -73,6 +73,7 @@ modules:
         - fzf 
         - gum
         - pass
+        - brightnessctl
       exclude:
         - alacritty
 
