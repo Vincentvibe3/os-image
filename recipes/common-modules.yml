@@ -51,7 +51,6 @@ modules:
         - zsh
         - powertop
         # - polkit-kde
-        - mako
         - ibus-mozc
         # - kf6-kirigami-devel
         # - kf5-kirigami-devel
@@ -76,6 +75,7 @@ modules:
         - brightnessctl
       exclude:
         - alacritty
+        - mako
 
     remove:
       packages:
