@@ -181,10 +181,10 @@ modules:
           # Misc
           - it.mijorus.smile
           
-  - type: brew
-    brew-analytics: false # disable telemetry
-    auto-upgrade: true
-    auto-update: true
+  # - type: brew
+  #   brew-analytics: false # disable telemetry
+  #   auto-upgrade: true
+  #   auto-update: true
 
   - type: fonts
     fonts:
