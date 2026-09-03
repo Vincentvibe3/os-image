@@ -47,7 +47,6 @@ modules:
         - dislocker
         # - swaybg
         # - swayidle
-        - btop
         - zsh
         - powertop
         # - polkit-kde
@@ -61,7 +60,6 @@ modules:
         - runc
         - docker-compose
         - docker-compose-switch
-        - usbtop
         - ibus-mozc
         - ibus
         - kopia
@@ -73,6 +71,7 @@ modules:
         - gum
         - pass
         - brightnessctl
+        - zoxide
       exclude:
         - alacritty
         - mako
