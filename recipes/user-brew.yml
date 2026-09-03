@@ -1,0 +1,28 @@
+modules:
+  - type: files
+    files:
+      - source: system/usr/share/ublue-os/namespaces/brew-namespace.conf
+        destination: /usr/share/ublue-os/namespaces/brew-namespace.conf
+      - source: user-brew
+        destination: /usr/lib/systemd/user
+
+  # Enable pam-namespaces
+  - type: script
+    scripts:
+      - enable-pam-namespaces.sh
+
+  # Requires per-user homebrew requires pam-namespaces
+  - type: script
+    scripts:
+      - setup-user-brew.sh
+  
+  - type: systemd
+    user:
+      enabled:
+        - brew-setup.service
+        - brew-update.timer
+        - brew-upgrade.timer
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+

@@ -220,6 +220,12 @@ modules:
     scripts:
       - remove-desktop-entries.sh
 
+  # Enable pam-namespaces
+  - from-file: namespaced-tmp.yml
+
+  # Requires per-user homebrew requires pam-namespaces
+  - from-file: user-brew.yml
+
   # Clean up to pass bootc lint
   # - type: script
   #   snippets:

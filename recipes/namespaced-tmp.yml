@@ -1,0 +1,19 @@
+modules:
+  - type: files
+    files:
+      - source: system/usr/share/ublue-os/namespaces/temp-namespace.conf
+        destination: /usr/share/ublue-os/namespaces/temp-namespace.conf
+
+  # Enable pam-namespaces
+  - type: script
+    scripts:
+      - enable-pam-namespaces.sh
+
+  # Requires per-user homebrew requires pam-namespaces
+  - type: script
+    scripts:
+      - setup-namespaced-tmp.sh
+
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+
+
