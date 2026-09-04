@@ -5,7 +5,11 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
+
 # remove system wide homebrew setup from ublue-os/brew
+systemctl disable brew-setup.service
+systemctl disable brew-update.timer
+systemctl disable brew-upgrade.timer
 rm /usr/lib/systemd/system-preset/01-homebrew.preset
 rm /usr/lib/systemd/system/brew-setup.service
 rm /usr/lib/systemd/system/brew-update.service
