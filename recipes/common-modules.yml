@@ -129,10 +129,8 @@ modules:
           - org.gnome.Characters
           - org.gnome.seahorse.Application
           
-  - type: default-flatpaks
-    configurations:
       - notify: false # Send notification after install/uninstall is finished (true/false)
-      - scope: user # Also add Flathub user repo, but no user packages
+        scope: user # Also add Flathub user repo, but no user packages
         install:
           # Development
           - io.podman_desktop.PodmanDesktop
