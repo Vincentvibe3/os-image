@@ -12,6 +12,6 @@ set -oue pipefail
 # chcon --reference /tmp /tmp-inst
 # chcon --reference /var/tmp /var/tmp/tmp-inst
 
-cat /usr/share/ublue-os/namespaces/temp-namespace.conf >> /etc/security/namespace.conf
+# cat /usr/share/ublue-os/namespaces/temp-namespace.conf >> /etc/security/namespace.conf
 
 cat /etc/security/namespace.conf
