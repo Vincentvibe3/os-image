@@ -20,7 +20,7 @@ rm /usr/lib/systemd/system/brew-upgrade.timer
 # Add modified units to user directory
 
 # Create folder for polyinstanced brew instances
-mkdir -p -m 000 /var/user-brew
+# mkdir -p -m 000 /var/user-brew
 # mkdir -p -m 000 /var/user-brew
 
 # pam_namespace_helper ignores namespace.d so merge to main config
