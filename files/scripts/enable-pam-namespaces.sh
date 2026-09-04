@@ -14,7 +14,7 @@ if [[ ! -f /etc/.pam_namespaced ]]; then
 
 	# Add pam namespaces
 	cat >> /usr/share/authselect/vendor/local/system-auth <<- EOF
-	session         required        pam_namespace.so unmnt_remnt {include if "with-namespace"}
+	session         required        pam_namespace.so unmnt_remnt ignore_config_error {include if "with-namespace"}
 	EOF
 
 	# generate pam files
