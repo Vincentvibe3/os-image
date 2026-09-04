@@ -221,7 +221,7 @@ modules:
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
   # Enable pam-namespaces
-  - from-file: namespaced-tmp.yml
+  # - from-file: namespaced-tmp.yml
 
   # Requires per-user homebrew requires pam-namespaces
   - from-file: user-brew.yml
