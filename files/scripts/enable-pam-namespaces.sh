@@ -20,4 +20,5 @@ if [[ ! -f /etc/.pam_namespaced ]]; then
 	# generate pam files
 	authselect select local
 	authselect enable-feature "with-namespace"
+	authselect apply-changes 
 fi
