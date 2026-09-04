@@ -14,8 +14,7 @@ if [[ ! -f /etc/.pam_namespaced ]]; then
 
 	# Add pam namespaces
 	cat >> /usr/share/authselect/vendor/local/postlogin <<- EOF
-	{include if "with-namespace"}
-	session         required        pam_namespace.so unmnt_remnt
+	session         required        pam_namespace.so unmnt_remnt {include if "with-namespace"}
 	EOF
 
 	# generate pam files
