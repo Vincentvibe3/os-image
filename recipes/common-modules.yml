@@ -219,7 +219,7 @@ modules:
       - remove-desktop-entries.sh
       
   # Enable pam-namespaces
-  # - from-file: namespaced-tmp.yml
+  - from-file: namespaced-tmp.yml
 
   # Requires per-user homebrew requires pam-namespaces
   - from-file: user-brew.yml
