@@ -4,7 +4,7 @@ modules:
       - source: system/usr/share/ublue-os/namespaces/brew-namespace.conf
         destination: /usr/share/ublue-os/namespaces/brew-namespace.conf
       - source: user-brew
-        destination: /usr/lib/systemd/user
+        destination: /usr/lib/systemd/
 
   # Enable pam-namespaces
   - type: script

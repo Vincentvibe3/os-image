@@ -13,7 +13,7 @@ rm /usr/lib/systemd/system/brew-update.timer
 rm /usr/lib/systemd/system/brew-upgrade.service
 rm /usr/lib/systemd/system/brew-upgrade.timer
 
-
+# Add modified units to user directory
 
 # Create folder for polyinstanced brew instances
 mkdir -p -m 000 /var/home/.user-brew
