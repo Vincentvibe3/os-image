@@ -10,7 +10,7 @@ if [[ ! -f /etc/.pam_namespaced ]]; then
 	setsebool -P allow_polyinstantiation 1
 
 	# Create a vendor override for local
-	cp -r /usr/share/authselect/default/local/ /usr/share/authselect/vendor/local/
+	# cp -r /usr/share/authselect/default/local/ /usr/share/authselect/vendor/local/
 
 	# Add pam namespaces
 	# cat >> /usr/share/authselect/vendor/local/postlogin <<- EOF
@@ -18,6 +18,6 @@ if [[ ! -f /etc/.pam_namespaced ]]; then
 	# EOF
 
 	# generate pam files
-	authselect select local
+	# authselect select local
 	# authselect enable-feature "with-namespace"
 fi
