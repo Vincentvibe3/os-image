@@ -217,6 +217,8 @@ modules:
   - type: script
     scripts:
       - remove-desktop-entries.sh
+      
+  - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
   # Enable pam-namespaces
   - from-file: namespaced-tmp.yml
@@ -228,7 +230,5 @@ modules:
   # - type: script
   #   snippets:
   #     - "rm -rf /tmp/nvim.root"
-
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
 
 
