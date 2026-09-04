@@ -24,4 +24,4 @@ mkdir -p -m 000 /var/home/.user-brew
 mkdir -p -m 000 /home/.user-brew
 
 # pam_namespace_helper ignores namespace.d so merge to main config
-cat /usr/share/ublue-os/namespaces/brew-namespace.conf >> /etc/security/namespace.conf
+# cat /usr/share/ublue-os/namespaces/brew-namespace.conf >> /etc/security/namespace.conf
