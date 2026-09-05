@@ -31,6 +31,7 @@ mkdir -p /var/home/linuxbrew
 # Copy user brew directory generator
 # This is needed to create them before gdm does (gdm has errors otherwise)
 
+mkdir -p /usr/libexec/user-brew/
 cp /usr/share/ublue-os/userbrew/generate-brew-dirs.py /usr/libexec/user-brew/generate-brew-dirs
 chmod +x /usr/libexec/user-brew/generate-brew-dirs
 cp /usr/share/ublue-os/userbrew/brew-folders-setup.service /etc/systemd/system
