@@ -29,7 +29,7 @@ if [ "$5" = 1 ]; then
             user="$4"
             passwd=$(getent passwd "$user")
             brewdir="/var/home/.user-brew/$user"
-            if [ "$1" = "/home/linuxbrew" ]; then
+            if [ "$1" = "/var/home/linuxbrew" ]; then
                     gid=$(echo "$passwd" | cut -f4 -d":")
                     chown -R "$user":"$gid" "$brewdir"
                     mask=$(sed -E -n 's/^UMASK[[:space:]]+([^#[:space:]]+).*/\1/p' /etc/login.defs)

@@ -26,7 +26,7 @@ systemctl --global preset brew-upgrade.timer
 # Create folder for polyinstanced brew instances
 mkdir -p -m 775 /var/home/.user-brew
 # mkdir -p -m 000 /var/home/.user-brew
-mkdir -p /var/home/linuxbrew
+# mkdir -p /var/home/linuxbrew
 
 # Copy user brew directory generator
 # This is needed to create them before gdm does (gdm has errors otherwise)
@@ -43,10 +43,10 @@ cp /usr/share/ublue-os/userbrew/userbrew-namespace.init /etc/security/namespace.
 chmod +x /etc/security/namespace.d/userbrew-namespace.init
 
 cat >> /etc/security/namespace.init <<- EOF
-if [[ -f "/etc/security/namespace.d/userbrew-namespace.init" ]]; then
+if [ -f "/etc/security/namespace.d/userbrew-namespace.init" ]; then
 	/etc/security/namespace.d/userbrew-namespace.init $@
 else
-	if [[ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]]; then
+	if [ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]; then
 		/usr/etc/security/namespace.d/userbrew-namespace.init $@
 	fi
 fi
