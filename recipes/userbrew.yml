@@ -1,0 +1,9 @@
+modules: 
+  - type: files
+    files:
+    - source: userbrew
+      destination: /usr/share/ublue-os/userbrew
+  
+  - type: script
+    scripts:
+      - userbrew.sh

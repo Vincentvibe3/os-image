@@ -219,9 +219,9 @@ modules:
       - remove-desktop-entries.sh
       
   # Enable pam-namespaces
-  - from-file: userbrew
+  - from-file: userbrew.yml
     
-  - from-file: poly-tmp
+  - from-file: poly-tmp.yml
     
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

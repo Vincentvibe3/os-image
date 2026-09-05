@@ -17,7 +17,7 @@ rm /usr/lib/systemd/system/brew-upgrade.service
 rm /usr/lib/systemd/system/brew-upgrade.timer
 
 # Add modified units to user directory
-cp -r -n $MODULE_DIRECTORY/userbrew/systemd/. /usr/lib/systemd/
+cp -r -n /usr/share/ublue-os/userbrew/systemd/. /usr/lib/systemd/
 systemctl --global preset 01-homebrew.preset
 
 # Create folder for polyinstanced brew instances
@@ -28,10 +28,10 @@ mkdir -p /var/home/linuxbrew
 # Copy user brew directory generator
 # This is needed to create them before gdm does (gdm has errors otherwise)
 
-cp $MODULE_DIRECTORY/userbrew/generate-user-brew-dirs.py /usr/libexec/user-brew/generate-brew-dirs
+cp /usr/share/ublue-os/userbrew/generate-user-brew-dirs.py /usr/libexec/user-brew/generate-brew-dirs
 chmod +x /usr/libexec/user-brew/generate-brew-dirs
-cp $MODULE_DIRECTORY/userbrew/brew-folders-setup.service /etc/systemd/system
+cp /usr/share/ublue-os/userbrew/brew-folders-setup.service /etc/systemd/system
 systemctl enable brew-folders-setup.service
 
 # pam_namespace_helper ignores namespace.d so merge to main config
-cat $MODULE_DIRECTORY/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
+cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf

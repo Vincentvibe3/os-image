@@ -1,0 +1,9 @@
+modules: 
+  - type: files
+    files:
+    - source: poly-tmp
+      destination: /usr/share/ublue-os/poly-tmp
+  
+  - type: script
+    scripts:
+      - poly-tmp.sh
