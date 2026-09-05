@@ -19,7 +19,9 @@ rm /usr/lib/systemd/system/brew-upgrade.timer
 # Add modified units to user directory
 cp -r -n /usr/share/ublue-os/userbrew/systemd/. /usr/lib/systemd/
 ls /usr/lib/systemd/user-preset
-systemctl --global preset 01-homebrew.preset
+systemctl --global preset brew-setup.service
+systemctl --global preset brew-update.timer
+systemctl --global preset brew-upgrade.timer
 
 # Create folder for polyinstanced brew instances
 mkdir -p -m 000 /var/home/.user-brew
