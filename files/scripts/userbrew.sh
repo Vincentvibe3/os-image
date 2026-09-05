@@ -41,3 +41,13 @@ mkdir -p /var/home/linuxbrew
 cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
 cp /usr/share/ublue-os/userbrew/userbrew-namespace.init /etc/security/namespace.d/userbrew-namespace.init
 chmod +x /etc/security/namespace.d/userbrew-namespace.init
+
+cat >> /etc/security/namespace.init <<- EOF
+if [[ -f "/etc/security/namespace.d/userbrew-namespace.init" ]]; then
+	/etc/security/namespace.d/userbrew-namespace.init $@
+else
+	if [[ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]]; then
+		/usr/etc/security/namespace.d/userbrew-namespace.init $@
+	fi
+fi
+EOF
