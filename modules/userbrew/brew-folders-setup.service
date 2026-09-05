@@ -1,0 +1,8 @@
+[Unit]
+Description=Generate user-brew folders
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/user-brew/generate-brew-dirs
+
+[Install]
+WantedBy=multi-user.target
