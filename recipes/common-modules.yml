@@ -219,8 +219,10 @@ modules:
       - remove-desktop-entries.sh
       
   # Enable pam-namespaces
-  - type: userbrew
-  - type: poly-tmp
+  - from-file: userbrew
+    
+  - from-file: poly-tmp
+    
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
   # Clean up to pass bootc lint
