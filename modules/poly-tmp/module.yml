@@ -1,0 +1,4 @@
+name: poly-tmp
+shortdesc: polyinstantiate tmp
+example: |
+  - type: poly-tmp

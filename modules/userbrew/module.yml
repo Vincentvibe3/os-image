@@ -1,0 +1,4 @@
+name: userbrew
+shortdesc: Per user homebrew via polyinstantiation
+example: |
+  - type: userbrew
