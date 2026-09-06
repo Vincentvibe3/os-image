@@ -39,7 +39,8 @@ mkdir -p /var/home/linuxbrew/
 # systemctl enable brew-folders-setup.service
 for gdmfile in $(ls /etc/pam.d/gdm*); do
 	if [ $(grep -c "session    required    pam_namespace.so unmnt_remnt ignore_config_error debug" $gdmfile) -ne 0 ]; then
-		sed -i 's/session    required    pam_namespace.so/session    required    pam_namespace.so unmnt_remnt ignore_config_error debug/' $gdmfile
+		# sed -i 's/session    required    pam_namespace.so/session    required    pam_namespace.so unmnt_remnt ignore_config_error debug/' $gdmfile
+		sed -i 's/session    required    pam_namespace.so//' $gdmfile
 	fi
 done
 # pam_namespace_helper ignores namespace.d so merge to main config
