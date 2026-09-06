@@ -45,9 +45,9 @@ for gdmfile in $(ls /etc/pam.d/gdm*); do
 	fi
 done
 # pam_namespace_helper ignores namespace.d so merge to main config
-cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
-cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
-chmod +x /etc/security/namespace.d/userbrew.init
+# cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
+# cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
+# chmod +x /etc/security/namespace.d/userbrew.init
 
 # sed -i 's/exit 0//' /etc/security/namespace.init
 
