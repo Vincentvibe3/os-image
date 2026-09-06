@@ -39,20 +39,20 @@ mkdir -p -m 000 /var/home/.user-brew
 
 # pam_namespace_helper ignores namespace.d so merge to main config
 cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
-cp /usr/share/ublue-os/userbrew/userbrew-namespace.init /etc/security/namespace.d/userbrew-namespace.init
-chmod +x /etc/security/namespace.d/userbrew-namespace.init
+# cp /usr/share/ublue-os/userbrew/userbrew-namespace.init /etc/security/namespace.d/userbrew-namespace.init
+# chmod +x /etc/security/namespace.d/userbrew-namespace.init
 
-sed -i 's/exit 0//' /etc/security/namespace.init
+# sed -i 's/exit 0//' /etc/security/namespace.init
 
-cat >> /etc/security/namespace.init <<- EOF
+# cat >> /etc/security/namespace.init <<- EOF
 
-if [ -f "/etc/security/namespace.d/userbrew-namespace.init" ]; then
-	/etc/security/namespace.d/userbrew-namespace.init $@
-else
-	if [ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]; then
-		/usr/etc/security/namespace.d/userbrew-namespace.init $@
-	fi
-fi
-exit 0
+# if [ -f "/etc/security/namespace.d/userbrew-namespace.init" ]; then
+# 	/etc/security/namespace.d/userbrew-namespace.init $@
+# else
+# 	if [ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]; then
+# 		/usr/etc/security/namespace.d/userbrew-namespace.init $@
+# 	fi
+# fi
+# exit 0
 
-EOF
+# EOF
