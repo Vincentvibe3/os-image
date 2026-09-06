@@ -7,6 +7,7 @@ Type=oneshot
 ExecStart=mkdir -p /var/home/linuxbrew/
 ExecStart=mkdir -p /var/home/linuxbrew/.userbrew
 ExecStart=chmod 000 /var/home/linuxbrew/.userbrew
+ExecStart=restorecon -Fv /var/home/linuxbrew/.userbrew
 
 [Install]
 WantedBy=sysinit.target

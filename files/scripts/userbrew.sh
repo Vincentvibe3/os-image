@@ -24,9 +24,6 @@ systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
 systemctl enable brew-generate-folder.service
 
-
-
-
 # allow selinux
 setsebool -P polyinstantiation_enabled 1
 
