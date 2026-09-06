@@ -24,9 +24,9 @@ systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
 
 # Create folder for polyinstanced brew instances
-mkdir -p -m 775 /var/home/.user-brew
-# mkdir -p -m 000 /var/home/.user-brew
-# mkdir -p /var/home/linuxbrew
+# mkdir -p -m 775 /var/home/.user-brew
+mkdir -p -m 000 /var/home/.user-brew
+mkdir -p /var/home/linuxbrew
 
 # Copy user brew directory generator
 # This is needed to create them before gdm does (gdm has errors otherwise)
