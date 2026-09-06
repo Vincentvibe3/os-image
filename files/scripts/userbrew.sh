@@ -45,6 +45,7 @@ chmod +x /etc/security/namespace.d/userbrew-namespace.init
 sed -i 's/exit 0//' /etc/security/namespace.init
 
 cat >> /etc/security/namespace.init <<- EOF
+
 if [ -f "/etc/security/namespace.d/userbrew-namespace.init" ]; then
 	/etc/security/namespace.d/userbrew-namespace.init $@
 else
@@ -53,4 +54,5 @@ else
 	fi
 fi
 exit 0
+
 EOF
