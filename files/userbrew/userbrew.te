@@ -1,0 +1,11 @@
+
+module userbrew 1.0;
+
+require {
+	type bin_t;
+	type namespace_init_t;
+	class file execute;
+}
+
+#============= namespace_init_t ==============
+allow namespace_init_t bin_t:file execute;

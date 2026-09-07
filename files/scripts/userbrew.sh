@@ -44,3 +44,6 @@ cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.
 cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
 chmod +x /etc/security/namespace.d/userbrew.init
 
+# Set selinux rules to allow execution of binaries in userbrew.init
+# otherwise the directories cant be chowned
+semodule -i /usr/share/ublue-os/userbrew/userbrew.pp
