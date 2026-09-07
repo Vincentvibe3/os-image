@@ -48,3 +48,4 @@ chmod +x /etc/security/namespace.d/userbrew.init
 # otherwise the directories cant be chowned
 semodule -i /usr/share/ublue-os/userbrew/userbrew.pp
 semodule -i /usr/share/ublue-os/userbrew/userbrew_transitive.pp
+semodule -i /usr/share/ublue-os/userbrew/userbrew_map.pp

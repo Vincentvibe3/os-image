@@ -1,0 +1,13 @@
+
+module userbrew_map 1.0;
+
+require {
+	type bin_t;
+	type namespace_init_t;
+	class file map;
+}
+
+#============= namespace_init_t ==============
+
+#!!!! This avc can be allowed using the boolean 'domain_can_mmap_files'
+allow namespace_init_t bin_t:file map;
