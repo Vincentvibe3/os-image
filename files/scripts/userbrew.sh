@@ -16,17 +16,16 @@ rm /usr/lib/systemd/system/brew-update.timer
 rm /usr/lib/systemd/system/brew-upgrade.service
 rm /usr/lib/systemd/system/brew-upgrade.timer
 
-# Add modified units to user directory
+# Add modified units to user directory and polyinstantiation creation unit
 cp -r -n /usr/share/ublue-os/userbrew/systemd/. /usr/lib/systemd/
 ls /usr/lib/systemd/user-preset
 systemctl --global preset brew-setup.service
 systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
+systemctl --global enable brew-generate-folder
 
-# Create folder for polyinstanced brew instances
-mkdir -p /var/home/linuxbrew/
-mkdir -p /var/home/linuxbrew/.userbrew
-chmod 000 /var/home/linuxbrew/.userbrew
+
+
 
 # allow selinux
 setsebool -P polyinstantiation_enabled 1
