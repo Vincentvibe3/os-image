@@ -65,13 +65,13 @@ modules:
         - kopia
         - kopia-ui
         - waydroid
+        - nethogs
         - stlink
         - htop
         - fzf 
         - gum
         - pass
         - brightnessctl
-        - zoxide
       exclude:
         - alacritty
         - mako
@@ -218,6 +218,10 @@ modules:
     scripts:
       - remove-desktop-entries.sh
       
+  - type: script
+    scripts:
+      - setup-nethogs.sh
+
   # Enable pam-namespaces
   - from-file: userbrew.yml
     
