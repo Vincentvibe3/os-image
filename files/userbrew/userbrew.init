@@ -28,7 +28,7 @@ if [ "$5" = 1 ]; then
             [ -x /sbin/restorecon ] && /sbin/restorecon "$1"
             user="$4"
             passwd=$(getent passwd "$user")
-            brewdir="/var/home/.user-brew/$user"
+            brewdir="/var/home/linuxbrew"
             if [ "$1" = "/var/home/linuxbrew" ]; then
                     gid=$(echo "$passwd" | cut -f4 -d":")
                     chown -R "$user":"$gid" "$brewdir"

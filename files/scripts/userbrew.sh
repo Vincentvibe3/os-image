@@ -24,42 +24,27 @@ systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
 
 # Create folder for polyinstanced brew instances
-# mkdir -p -m 775 /var/home/.user-brew
-mkdir -p /var/home/.user-brew
-chmod 000 /var/home/.user-brew
 mkdir -p /var/home/linuxbrew/
+mkdir -p /var/home/linuxbrew/.userbrew
+chmod 000 /var/home/linuxbrew/.userbrew
 
-# Copy user brew directory generator
-# This is needed to create them before gdm does (gdm has errors otherwise)
-
-# mkdir -p /usr/libexec/user-brew/
-# cp /usr/share/ublue-os/userbrew/generate-brew-dirs.py /usr/libexec/user-brew/generate-brew-dirs
-# chmod +x /usr/libexec/user-brew/generate-brew-dirs
-# cp /usr/share/ublue-os/userbrew/brew-folders-setup.service /etc/systemd/system
+# allow selinux
+setsebool -P polyinstantiation_enabled 1
 
 # systemctl enable brew-folders-setup.service
 for gdmfile in $(ls /etc/pam.d/gdm*); do
-	if [ $(grep -c "session    required    pam_namespace.so unmnt_remnt ignore_config_error debug" $gdmfile) -ne 0 ]; then
-		sed -i 's/session    required    pam_namespace.so/session    required    pam_namespace.so unmnt_remnt ignore_config_error debug/' $gdmfile
+	if [ $(grep -c "session    required    pam_namespace.so unmnt_remnt ignore_config_error debug" $gdmfile) -eq 0 ]; then
+		sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' $gdmfile
 		# sed -i 's/session    required    pam_namespace.so//' $gdmfile
 	fi
 done
+
+sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/login
+sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/sshd
+sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/remote
+
 # pam_namespace_helper ignores namespace.d so merge to main config
-# cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
-# cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
-# chmod +x /etc/security/namespace.d/userbrew.init
+cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
+cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
+chmod +x /etc/security/namespace.d/userbrew.init
 
-# sed -i 's/exit 0//' /etc/security/namespace.init
-
-# cat >> /etc/security/namespace.init <<- EOF
-
-# if [ -f "/etc/security/namespace.d/userbrew-namespace.init" ]; then
-# 	/etc/security/namespace.d/userbrew-namespace.init $@
-# else
-# 	if [ -f "/usr/etc/security/namespace.d/userbrew-namespace.init" ]; then
-# 		/usr/etc/security/namespace.d/userbrew-namespace.init $@
-# 	fi
-# fi
-# exit 0
-
-# EOF
