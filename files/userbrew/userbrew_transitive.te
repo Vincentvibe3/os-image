@@ -1,0 +1,11 @@
+
+module userbrew_transitive 1.0;
+
+require {
+	type bin_t;
+	type namespace_init_t;
+	class file execute_no_trans;
+}
+
+#============= namespace_init_t ==============
+allow namespace_init_t bin_t:file execute_no_trans;

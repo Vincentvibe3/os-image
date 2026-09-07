@@ -47,3 +47,4 @@ chmod +x /etc/security/namespace.d/userbrew.init
 # Set selinux rules to allow execution of binaries in userbrew.init
 # otherwise the directories cant be chowned
 semodule -i /usr/share/ublue-os/userbrew/userbrew.pp
+semodule -i /usr/share/ublue-os/userbrew/userbrew_transitive.pp
