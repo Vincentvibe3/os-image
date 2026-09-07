@@ -22,7 +22,7 @@ ls /usr/lib/systemd/user-preset
 systemctl --global preset brew-setup.service
 systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
-systemctl --global enable brew-generate-folder
+systemctl enable brew-generate-folder.service
 
 
 
