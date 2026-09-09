@@ -72,6 +72,8 @@ modules:
         - gum
         - pass
         - brightnessctl
+        - speech-dispatcher
+        - speech-dispatcher-utils
       exclude:
         - alacritty
         - mako
