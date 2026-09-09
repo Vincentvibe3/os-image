@@ -196,6 +196,8 @@ modules:
       google-fonts:
         - Roboto
         - Inter
+        - CascadiaCode
+        - CascadiaMono
 
   - type: systemd
     
