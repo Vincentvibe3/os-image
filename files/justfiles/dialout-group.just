@@ -1,3 +1,3 @@
-# Setup grub in 1080p with 3 second timeout and os prober
-add-input-group:
-    sudo grep -E '^dialout:' /usr/lib/group >> /etc/group
+# Add dialout group to the system
+add-dialout-group:
+    grep -E '^dialout:' /usr/lib/group | sudo tee -a /etc/group
