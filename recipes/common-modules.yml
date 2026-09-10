@@ -222,7 +222,6 @@ modules:
     scripts:
       - remove-desktop-entries.sh
       - setup-nethogs.sh
-      - additional-groups.sh
 
   # Enable pam-namespaces
   - from-file: userbrew.yml
