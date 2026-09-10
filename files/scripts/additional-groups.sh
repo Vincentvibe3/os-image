@@ -5,10 +5,7 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
-# Your code goes here.
-echo 'This is an example shell script'
-echo 'Scripts here will run during build if specified in recipe.yml'
-
 grep -E '^dialout:' /usr/lib/group >> /etc/group
-grep -E '^uinput:' /usr/lib/group >> /etc/group
+groupadd --system uinput
+# grep -E '^uinput:' /usr/lib/group >> /etc/group
 grep -E '^input:' /usr/lib/group >> /etc/group
