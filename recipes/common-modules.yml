@@ -176,7 +176,7 @@ modules:
           - com.spotify.Client
           - org.videolan.VLC
           - com.obsproject.Studio
-          - com.github.neithern.g4music
+          - io.github.screwys.Rufin
 
           # Misc
           - it.mijorus.smile
