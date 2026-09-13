@@ -74,6 +74,7 @@ modules:
         - brightnessctl
         - speech-dispatcher
         - speech-dispatcher-utils
+        - wl-mirror
       exclude:
         - alacritty
         - mako
