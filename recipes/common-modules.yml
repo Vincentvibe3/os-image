@@ -75,6 +75,7 @@ modules:
         - speech-dispatcher
         - speech-dispatcher-utils
         - wl-mirror
+        - chezmoi
       exclude:
         - alacritty
         - mako
