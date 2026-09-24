@@ -24,22 +24,6 @@ systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
 systemctl enable brew-generate-folder.service
 
-# allow selinux
-setsebool -P polyinstantiation_enabled 1
-
-# systemctl enable brew-folders-setup.service
-for gdmfile in $(ls /etc/pam.d/gdm*); do
-	if [ $(grep -c "session    required    pam_namespace.so unmnt_remnt ignore_config_error debug" $gdmfile) -eq 0 ]; then
-		sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' $gdmfile
-		# sed -i 's/session    required    pam_namespace.so//' $gdmfile
-	fi
-done
-
-sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/login
-sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/sshd
-sed -i 's/^.*pam_namespace.so$/session     required      pam_namespace.so unmnt_remnt ignore_config_error debug/' /etc/pam.d/remote
-echo "session     required      pam_namespace.so unmnt_remnt ignore_config_error debug" >> /etc/pam.d/su
-
 # pam_namespace_helper ignores namespace.d so merge to main config
 cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
 cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init

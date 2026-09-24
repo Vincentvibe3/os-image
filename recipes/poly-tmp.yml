@@ -6,4 +6,5 @@ modules:
   
   - type: script
     scripts:
+      - pam-namespace.sh
       - poly-tmp.sh
