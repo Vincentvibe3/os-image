@@ -76,7 +76,7 @@ modules:
         - speech-dispatcher-utils
         - wl-mirror
         - chezmoi
-        - gnome-boxes 
+        # - gnome-boxes 
       exclude:
         - alacritty
         - mako
