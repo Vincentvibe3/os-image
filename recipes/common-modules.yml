@@ -77,6 +77,7 @@ modules:
         - wl-mirror
         - chezmoi
         - gnome-boxes 
+        - gparted
       exclude:
         - alacritty
         - mako
