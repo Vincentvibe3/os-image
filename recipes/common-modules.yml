@@ -184,7 +184,7 @@ modules:
 
           # Misc
           - it.mijorus.smile
-          
+          - com.usebottles.bottles
   # - type: brew
   #   brew-analytics: false # disable telemetry
   #   auto-upgrade: true
