@@ -10,6 +10,8 @@ curl -L -o /tmp/userbrew https://github.com/Vincentvibe3/userbrew/releases/lates
 curl -L -o /tmp/userbrew-sha256 https://github.com/Vincentvibe3/userbrew/releases/latest/download/userbrew-sha256
 cd /tmp
 cksum -a sha2 --length 256 -c userbrew-sha256
+cp /tmp/userbrew /usr/bin/userbrew
+chmod +x /usr/bin/userbrew
 cd -
 
 # remove system wide homebrew setup from ublue-os/brew
