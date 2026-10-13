@@ -5,8 +5,8 @@ Before=multi-user.target
 
 [Service]
 Type=Unit
-ExecStart=mkdir -p /home/linuxbrew
-Exec=/usr/bin/userbrew 
+ExecStartPre=mkdir -p /home/linuxbrew
+ExecStart=/usr/bin/userbrew 
 
 [Install]
 WantedBy=basic.target
