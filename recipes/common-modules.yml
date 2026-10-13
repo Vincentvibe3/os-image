@@ -134,6 +134,9 @@ modules:
           - org.gnome.Weather
           - org.gnome.Characters
           - org.gnome.seahorse.Application
+          - org.gnome.Decibels
+          - org.gtk.Gtk3theme.adw-gtk3
+          - org.gtk.Gtk3theme.adw-gtk3-dark"
           
       - notify: false # Send notification after install/uninstall is finished (true/false)
         scope: user # Also add Flathub user repo, but no user packages
@@ -142,6 +145,7 @@ modules:
           - io.podman_desktop.PodmanDesktop
           - org.chromium.Chromium
           - dev.geopjr.Collision
+          - com.ranfdev.DistroShelf
 
           # Productivity
           - org.mozilla.thunderbird
@@ -185,10 +189,7 @@ modules:
           # Misc
           - it.mijorus.smile
           - com.usebottles.bottles
-  # - type: brew
-  #   brew-analytics: false # disable telemetry
-  #   auto-upgrade: true
-  #   auto-update: true
+          - be.alexandervanhee.gradia
 
   - type: fonts
     fonts:
@@ -226,6 +227,7 @@ modules:
 
   - type: script
     scripts:
+      - remove-bluefin-flatpaks.sh
       - remove-desktop-entries.sh
       - setup-nethogs.sh
 
