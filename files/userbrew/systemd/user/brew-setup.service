@@ -4,7 +4,6 @@ Wants=multi-user.target
 After=multi-user.target
 ConditionPathExists=!%h/.config/.linuxbrew
 ConditionPathExists=!%h/.userbrew
-ConditionPathExists=!/home/linuxbrew/.linuxbrew
 ConditionPathExists=/usr/share/homebrew.tar.zst
 
 [Service]
@@ -12,7 +11,7 @@ Type=oneshot
 ExecStart=mkdir -p %h/.userbrew
 ExecStart=/usr/bin/mkdir -p /tmp/homebrew
 ExecStart=/usr/bin/tar --zstd -xf /usr/share/homebrew.tar.zst -C /tmp/homebrew
-ExecStart=/usr/bin/cp -R -n /tmp/homebrew/home/linuxbrew/.linuxbrew /home/linuxbrew
+ExecStart=/usr/bin/cp -R -T -n /tmp/homebrew/home/linuxbrew/.linuxbrew %h/.userbrew
 ExecStart=/usr/bin/rm -rf /tmp/homebrew
 ExecStart=/usr/bin/touch %h/.config/.linuxbrew
 
