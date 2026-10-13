@@ -5,6 +5,13 @@
 # builds actually ran successfully without any errors!
 set -oue pipefail
 
+# Download userbrew binary and verify integrity
+curl -L -o /tmp/userbrew https://github.com/Vincentvibe3/userbrew/releases/latest/download/userbrew
+curl -L -o /tmp/userbrew-sha256 https://github.com/Vincentvibe3/userbrew/releases/latest/download/userbrew-sha256
+cd /tmp
+cksum -a sha2 --length 256 -c userbrew-sha256
+cd -
+
 # remove system wide homebrew setup from ublue-os/brew
 systemctl disable brew-setup.service
 systemctl disable brew-update.timer
@@ -22,15 +29,7 @@ ls /usr/lib/systemd/user-preset
 systemctl --global preset brew-setup.service
 systemctl --global preset brew-update.timer
 systemctl --global preset brew-upgrade.timer
-systemctl enable brew-generate-folder.service
+systemctl enable userbrew.service
 
-# pam_namespace_helper ignores namespace.d so merge to main config
-cat /usr/share/ublue-os/userbrew/brew-namespace.conf >> /etc/security/namespace.conf
-cp /usr/share/ublue-os/userbrew/userbrew.init /etc/security/namespace.d/userbrew.init
-chmod +x /etc/security/namespace.d/userbrew.init
-
-# Set selinux rules to allow execution of binaries in userbrew.init
-# otherwise the directories cant be chowned
-semodule -i /usr/share/ublue-os/userbrew/userbrew.pp
-semodule -i /usr/share/ublue-os/userbrew/userbrew_transitive.pp
-semodule -i /usr/share/ublue-os/userbrew/userbrew_map.pp
+# Copy fuse configuration to enable all users to use the fuse fs
+cp /usr/share/ublue-os/userbrew/fuse.conf /etc/fuse.conf

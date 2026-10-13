@@ -1,0 +1,12 @@
+[Unit]
+Description=Run userbrew FUSE fs
+After=basic.target
+Before=multi-user.target
+
+[Service]
+Type=Unit
+ExecStart=mkdir -p /home/linuxbrew
+Exec=/usr/bin/userbrew 
+
+[Install]
+WantedBy=basic.target

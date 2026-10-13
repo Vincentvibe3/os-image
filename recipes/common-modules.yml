@@ -212,6 +212,8 @@ modules:
     user:
       enabled:
         - podman.socket
+        - speech-dispatcher.socket
+        - ibus.service
 
   - type: justfiles
     validate: true

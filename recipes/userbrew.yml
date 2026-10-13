@@ -6,5 +6,4 @@ modules:
   
   - type: script
     scripts:
-      - pam-namespace.sh
       - userbrew.sh

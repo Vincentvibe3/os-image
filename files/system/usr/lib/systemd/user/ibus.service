@@ -1,0 +1,15 @@
+[Unit]
+Description=Ibus IME
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.Ibus
+RemainAfterExit=yes
+ExecStart=/usr/bin/ibus start --type=wayland
+ExecReload=/usr/bin/ibus restart --type=wayland
+ExecStop=/usr/bin/ibus exit
+
+[Install]
+WantedBy=graphical-session.target
