@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -oue pipefail
 
 # Your code goes here.
