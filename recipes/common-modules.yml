@@ -136,7 +136,7 @@ modules:
           - org.gnome.seahorse.Application
           - org.gnome.Decibels
           - org.gtk.Gtk3theme.adw-gtk3
-          - org.gtk.Gtk3theme.adw-gtk3-dark"
+          - org.gtk.Gtk3theme.adw-gtk3-dark
           
       - notify: false # Send notification after install/uninstall is finished (true/false)
         scope: user # Also add Flathub user repo, but no user packages
