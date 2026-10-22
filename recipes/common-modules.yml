@@ -1,9 +1,5 @@
 modules:
 
-  - type: script
-    snippets:
-      - "ls -la /usr"
-      - "ls -la /usr/local"
   - type: files
     files:
       - source: system
