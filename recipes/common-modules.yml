@@ -8,7 +8,7 @@ modules:
   # Temp: Pin new certs to fix eMudhra revocation while upstream bluefin fixes it
   - type: script
     snippets:
-      - "dnf install -y ca-certificates ca-certificates.noarch-2026.2.92_v9.0.319-1.fc44"
+      - "dnf install -y ca-certificates ca-certificates-2026.2.92_v9.0.319-1.fc44"
 
   - type: dnf
     repos:
