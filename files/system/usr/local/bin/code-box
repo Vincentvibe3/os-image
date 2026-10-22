@@ -1,0 +1,145 @@
+#!/usr/bin/python3
+
+import argparse
+import json
+import os
+import pathlib
+import readline
+import shlex
+import shutil
+import subprocess
+import sys
+
+parser = argparse.ArgumentParser(description="Open vscode attached to a container")
+parser.add_argument("-c", "--container", required=False, help="container name")
+parser.add_argument(
+    "-r",
+    "--runtime",
+    required=False,
+    default="podman",
+    help="command to run for the OCI runtime",
+)
+parser.add_argument(
+    "-p", "--program", required=False, help="Command to open vscode", default="code"
+)
+parser.add_argument("path", help="Path to open in the container")
+parser.add_argument(
+    "args",
+    nargs="*",
+    metavar="vscode arguments",
+    help="Additional arguments to pass to vscode",
+)
+args = parser.parse_args()
+
+code_program = args.program
+
+
+def get_code_installation(command: str):
+    if command.strip().startswith("flatpak run"):
+        return command
+    else:
+        return shutil.which(command)
+
+
+def get_containers():
+    try:
+        proc = subprocess.run(
+            ["podman", "container", "list", "-a", "--format", "json"],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        names = {}
+        containers = json.loads(proc.stdout)
+        for container in containers:
+            names[container["Names"][0]] = (
+                container["Names"][0].strip(),
+                "distrobox" == container["Labels"].get("manager", ""),
+                container["Image"],
+                container["Id"],
+            )
+    except subprocess.CalledProcessError as e:
+        print(f"Distrobox failed with error ({e.returncode}):\n{e.output}")
+        sys.exit(e.returncode)
+    return names
+
+
+boxes = get_containers()
+boxes_list = sorted(boxes.values(), key=lambda x: (not x[1], x[0]))
+
+
+def container_completer(text, state):
+    if boxes is None:
+        return None
+
+    options = [i[0] for i in boxes_list if i[0].startswith(text)]
+    if state < len(options):
+        return options[state]
+    else:
+        return None
+
+
+code_command = get_code_installation(code_program)
+
+if code_command is None:
+    sys.exit(127)
+if args.path is not None:
+    if args.container is None:
+        if shutil.which("gum") is not None:
+            result = subprocess.run(
+                [
+                    "gum",
+                    "choose",
+                    "--label-delimiter",
+                    "|",
+                    *(
+                        f"{x[0]} [{x[2]}] {'(distrobox)' if x[1] else ''}|{x[0]}"
+                        for x in boxes_list
+                    ),
+                ],
+                stdout=subprocess.PIPE,
+                text=True,
+                check=False,
+            )
+            if result.stdout and result.returncode == 0:
+                chosen_box = result.stdout
+            else:
+                sys.exit(0)
+        else:
+            if os.name == "posix":
+                readline.parse_and_bind("tab: complete")
+                readline.set_completer(container_completer)
+            print("Available containers: ")
+            for container in boxes_list:
+                print(
+                    f"{container[0]} [{container[2]}] {'(distrobox)' if container[1] else ''}"
+                )
+            print()
+            print("Choose a container (leave empty to cancel):")
+            chosen_box = input()
+    else:
+        chosen_box = args.container
+    chosen_box = chosen_box.strip()
+    if chosen_box not in boxes:
+        print("Container does not exist", file=sys.stderr)
+        sys.exit(1)
+    container_json = json.dumps({"containerName": boxes[chosen_box][0]})
+    encoded_json = container_json.encode("ascii").hex()
+
+    path = args.path
+    if boxes[chosen_box][1]:
+        path = str(pathlib.Path(args.path).resolve())
+
+    command = [
+        code_command,
+        "--folder-uri",
+        f"vscode-remote://attached-container+{encoded_json}/{path}",
+        f"{'' if not args.args else shlex.join(args.args)}",
+    ]
+
+    process = subprocess.run(command, check=False)
+    sys.exit(process.returncode)
+
+
+else:
+    sys.exit(1)
