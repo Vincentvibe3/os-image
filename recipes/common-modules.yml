@@ -5,6 +5,11 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  # Temp: Pin new certs to fix eMudhra revocation while upstream bluefin fixes it
+  - type: script
+    snippets:
+      - "dnf install -y ca-certificates ca-certificates.noarch-2026.2.92_v9.0.319-1.fc44"
+
   - type: dnf
     repos:
       nonfree: rpmfusion
