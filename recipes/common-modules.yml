@@ -206,6 +206,15 @@ modules:
         - Inter
         - CascadiaCode
         - CascadiaMono
+      url-fonts:
+        - name: IoskeleyMono
+          url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono.zip
+        - name: IoskeleyMono NF
+          url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono-NerdFont.zip
+        - name: IoskeleyMono Term
+          url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono-Term.zip
+        - name: IoskeleyMono Term NF
+          url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono-Term-NerdFont.zip
 
   - type: systemd
     
