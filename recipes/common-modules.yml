@@ -216,6 +216,8 @@ modules:
           url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono-Term.zip
         - name: IoskeleyMono-Term-NF
           url: https://github.com/ahatem/IoskeleyMono/releases/download/v2.2.0/IoskeleyMono-Term-NerdFont.zip
+        - name: TwemojiMozilla
+          url: https://github.com/mozilla/twemoji-colr/releases/download/v0.7.0/Twemoji.Mozilla.ttf
 
   - type: systemd
     
