@@ -200,12 +200,12 @@ modules:
         - CascadiaCode
         - CascadiaMono
         - Iosevka
-        - NerdFontsSymbolsOnly
+        # - NerdFontsSymbolsOnly
       google-fonts:
         - Roboto
         - Inter
-        - CascadiaCode
-        - CascadiaMono
+        - Cascadia Code
+        - Cascadia Mono
         
       url-fonts:
         - name: IoskeleyMono
