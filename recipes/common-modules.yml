@@ -79,7 +79,7 @@ modules:
         - chezmoi
         - gnome-boxes 
         - gparted
-        - libkrun 
+        - crun-krun
       exclude:
         - alacritty
         - mako
